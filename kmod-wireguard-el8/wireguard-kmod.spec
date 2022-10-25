@@ -2,13 +2,13 @@
 %define kmod_name		wireguard
 
 # If kmod_kernel_version isn't defined on the rpmbuild line, define it here.
-%{!?kmod_kernel_version: %define kmod_kernel_version 4.18.0-372.9.1.el8}
+%{!?kmod_kernel_version: %define kmod_kernel_version 4.18.0-372.13.1.el8_6}
 
 %{!?dist: %define dist .el8}
 
 # define epoch to equal minor point release to ensure
 # newer versions are not installed on older kernels
-%if "%{kmod_kernel_version}" == "4.18.0-348.el8"
+%if "%{kmod_kernel_version}" == "4.18.0-348.el8_6"
 Epoch:	5
 %else
 Epoch:	6
@@ -121,7 +121,7 @@ done
 %doc /usr/share/doc/kmod-%{kmod_name}-%{version}/
 
 %changelog
-* Mon Oct 24 2022 Patrick Coakley <patrick.coakley@spearline.com> - 1.0.20220627-3
+* Tue Oct 25 2022 Patrick Coakley <patrick.coakley@spearline.com> - 1.0.20220627-3
 - Remove %post_* sections for ostree. Also changer kernel version
 
 * Sat Jul 02 2022 Philip J Perry <phil@elrepo.org> 1.0.20220627-2
