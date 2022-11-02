@@ -1,4 +1,4 @@
-%global           pjsip_version   2.10
+%global           pjsip_version   2.12.1
 
 %global           optflags        %{optflags} -Werror-implicit-function-declaration -DLUA_COMPAT_MODULE
 %ifarch s390 %{arm} aarch64 %{mips}
@@ -15,7 +15,7 @@
 Summary:          The Open Source PBX
 Name:             asterisk
 Epoch:            2
-Version:          16.23.0
+Version:          16.29.0
 Release:          1%{?dist}
 License:          GPLv2
 URL:              http://www.asterisk.org/
@@ -312,8 +312,11 @@ rm -f %{buildroot}%{_sysconfdir}/asterisk/motif.conf
 %{_libdir}/libasteriskssl.so
 %{_libdir}/libasteriskpj.so
 
-
 %changelog
+* Tue Nov 1 2022 Patrick Coakley <patrick.coakley@spearline.com> - 16.29.0-2
+- Update asterisk to 16.29.0
+- Update pjproject to 2.12.1
+
 * Tue Jan 25 2022 Dhaval Indrodiya <dhaval.indrodiya@spearline.com> - 16.23.0
 - Update to asterisk 16.23.0
 
