@@ -1,0 +1,86 @@
+Description: Fix zero-size struct member usage
+Author: Guillem Jover <gjover@sipwise.com>
+
+These zero-members are not at the end of the struct, which is an old
+convention/extension to implement flexible member arrays. In this case
+it appears to be used as a replacement for unions.
+
+Replace this kind of usage with actual unions, to preserve the ABI.
+
+---
+ pri_q921.h |   18 ++++++++++++------
+ pri_q931.h |   18 ++++++++++--------
+ 2 files changed, 22 insertions(+), 14 deletions(-)
+
+--- a/pri_q921.h
++++ b/pri_q921.h
+@@ -115,8 +115,10 @@ typedef struct q921_s {
+ 	u_int8_t p_f:1;			/* Poll/Final bit */
+ 	u_int8_t n_r:7;			/* Number Received */
+ #endif
+-	u_int8_t data[0];		/* Any further data */
+-	u_int8_t fcs[2];		/* At least an FCS */
++	union {
++		u_int8_t data[0];		/* Any further data */
++		u_int8_t fcs[2];		/* At least an FCS */
++	};
+ } __attribute__ ((packed)) q921_s;
+ 
+ /* An Unnumbered Format frame */
+@@ -133,8 +135,10 @@ typedef struct q921_u {
+ 	u_int8_t p_f:1;			/* Poll/Final bit */
+ 	u_int8_t m3:3;			/* Top 3 modifier bits */
+ #endif
+-	u_int8_t data[0];		/* Any further data */
+-	u_int8_t fcs[2];		/* At least an FCS */
++	union {
++		u_int8_t data[0];		/* Any further data */
++		u_int8_t fcs[2];		/* At least an FCS */
++	};
+ } __attribute__ ((packed)) q921_u;
+ 
+ /* An Information frame */
+@@ -151,8 +155,10 @@ typedef struct q921_i {
+ 	u_int8_t p_f:1;			/* Poll/Final bit */	
+ 	u_int8_t n_r:7;			/* Number received */
+ #endif
+-	u_int8_t data[0];		/* Any further data */
+-	u_int8_t fcs[2];		/* At least an FCS */
++	union {
++		u_int8_t data[0];		/* Any further data */
++		u_int8_t fcs[2];		/* At least an FCS */
++	};
+ } q921_i;
+ 
+ typedef union {
+--- a/pri_q931.h
++++ b/pri_q931.h
+@@ -36,18 +36,20 @@ typedef enum q931_mode {
+ 	PACKET_MODE
+ } q931_mode;
+ 
+-typedef struct q931_h {
++typedef union q931_h {
+ 	unsigned char raw[0];
+-	u_int8_t pd;		/* Protocol Discriminator */
++	struct {
++		u_int8_t pd;		/* Protocol Discriminator */
+ #if __BYTE_ORDER == __BIG_ENDIAN
+-	u_int8_t x0:4;
+-	u_int8_t crlen:4;/*!< Call reference length */
++		u_int8_t x0:4;
++		u_int8_t crlen:4;/*!< Call reference length */
+ #else
+-	u_int8_t crlen:4;/*!< Call reference length */
+-	u_int8_t x0:4;
++		u_int8_t crlen:4;/*!< Call reference length */
++		u_int8_t x0:4;
+ #endif
+-	u_int8_t contents[0];
+-	u_int8_t crv[3];/*!< Call reference value */
++		u_int8_t contents[0];
++		u_int8_t crv[3];/*!< Call reference value */
++	};
+ } __attribute__ ((packed)) q931_h;
+ 
+ 
