@@ -69,6 +69,7 @@ BuildRequires:    perl-interpreter
 BuildRequires:    perl-generators
 BuildRequires:    popt-devel
 BuildRequires:    systemd
+BuildRequires:    xmlstarlet
 BuildRequires:    kernel-headers
 BuildRequires:    alsa-lib-devel
 BuildRequires:    curl-devel
@@ -99,19 +100,6 @@ Requires(post):   systemd-units
 Requires(post):   systemd-sysv
 Requires(preun):  systemd-units
 Requires(postun): systemd-units
-
-# Doesn't work for el9 
-# On el8 it simply builds ncurses-devel so i think 
-# libtermcap-devel is redundant 
-# BuildRequires: libtermcap-devel
-
-# Don't work for el9
-%if 0%{?el8}
-#Two packages not available on elrepo 9
-BuildRequires:    pjproject-devel
-BuildRequires:    xmlstarlet
-%endif
-
 
 # chan_phone headers no longer in kernel headers
 Obsoletes:        asterisk-phone < %{version}
