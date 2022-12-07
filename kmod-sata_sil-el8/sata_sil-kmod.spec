@@ -2,13 +2,13 @@
 %define kmod_name		sata_sil
 
 # If kmod_kernel_version isn't defined on the rpmbuild line, define it here.
-%{!?kmod_kernel_version: %define kmod_kernel_version 4.18.0-372.9.1.el8}
+%{!?kmod_kernel_version: %define kmod_kernel_version 4.18.0-425.3.1.el8}
 
 %{!?dist: %define dist .el8}
 
 Name:           kmod-%{kmod_name}
 Version:        2.4
-Release:        6%{?dist}
+Release:        8%{?dist}
 Summary:        %{kmod_name} kernel module(s)
 Group:          System Environment/Kernel
 License:        GPLv2
@@ -121,8 +121,13 @@ find %{buildroot} -type f -name \*.ko -exec %{__strip} --strip-debug \{\} \;
 %doc /usr/share/doc/kmod-%{kmod_name}-%{version}/
 
 %changelog
-* Mon Oct 24 2022 Patrick Coakley <patrick.coakley@spearline.com> - 2.4-2
-- Remove %post_* sections for ostree
+%changelog
+* Fri Dec 09 2022 Patrick Coakley <patrick.coakley@spearline.com> - 2.4-8
+- Updated kernel version to 4.18.0-425.3.1.el8 to work on AlmaLinux 8.7
+
+* Tue Nov 08 2022 Akemi Yagi <toracat@elrepo.org> - 2.4-7
+- Source code from kernel-4.18.0-425.3.1.el8 (8.7 GA)
+- Built against RHEL 8.7 GA kernel
 
 * Tue May 10 2022 Akemi Yagi <toracat@elrepo.org> - 2.4-6
 - Rebuilt against RHEL 8.6 GA kernel 4.18.0-372.9.1.el8

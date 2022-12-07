@@ -2,21 +2,15 @@
 %define kmod_name		wireguard
 
 # If kmod_kernel_version isn't defined on the rpmbuild line, define it here.
-%{!?kmod_kernel_version: %define kmod_kernel_version 4.18.0-372.13.1.el8_6}
+%{!?kmod_kernel_version: %define kmod_kernel_version 4.18.0-425.3.1.el8}
 
 %{!?dist: %define dist .el8}
 
-# define epoch to equal minor point release to ensure
-# newer versions are not installed on older kernels
-%if "%{kmod_kernel_version}" == "4.18.0-348.el8_6"
-Epoch:	5
-%else
-Epoch:	6
-%endif
+Epoch:	7
 
 Name:		kmod-%{kmod_name}
 Version:	1.0.20220627
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	%{kmod_name} kernel module(s)
 Group:		System Environment/Kernel
 License:	GPLv2
@@ -27,6 +21,7 @@ Source0:  https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-
 Source5:  https://raw.githubusercontent.com/elrepo/packages/master/wireguard-kmod/el8/GPL-v2.0.txt
 
 # Source code patches
+Patch0:		elrepo-wireguard-backports.el8_7.patch
 
 %define __spec_install_post /usr/lib/rpm/check-buildroot \
                             /usr/lib/rpm/redhat/brp-ldconfig \
@@ -73,7 +68,7 @@ of the same variant of the Linux kernel and not on any one specific build.
 echo "override %{kmod_name} * weak-updates/%{kmod_name}" > kmod-%{kmod_name}.conf
 
 # Apply patch(es)
-# % patch0 -p1
+## autosetup used, no need to specify patches here
 
 %build
 
@@ -121,11 +116,17 @@ done
 %doc /usr/share/doc/kmod-%{kmod_name}-%{version}/
 
 %changelog
-* Tue Oct 25 2022 Patrick Coakley <patrick.coakley@spearline.com> - 1.0.20220627-3
-- Remove %post_* sections for ostree. Also changer kernel version
+%changelog
+* Wed Dec 07 2022 Patrick Coakley <patrick.coakley@spearline.com> - 1.0.20220627-4
+- Updated for SpearlineOS 8.7
+
+* Thu Nov 10 2022 Philip J Perry <phil@elrepo.org> 1.0.20220627-3
+- Rebuilt for RHEL 8.7
+- Fix backport of ktime_get_coarse_boottime_ns on RHEL 8.7
+  [https://elrepo.org/bugs/view.php?id=1283]
 
 * Sat Jul 02 2022 Philip J Perry <phil@elrepo.org> 1.0.20220627-2
-- Rebuild against kernel-.18.0-372.13.1.el8_6 for kABI breakage
+- Rebuild against kernel-4.18.0-372.13.1.el8_6 for kABI breakage
 
 * Mon Jun 27 2022 Philip J Perry <phil@elrepo.org> 1.0.20220627-1
 - Update to 1.0.20220627
