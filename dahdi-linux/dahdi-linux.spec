@@ -19,6 +19,9 @@ URL:		http://www.kernel.org/
 # Sources
 Source0:	%{name}-complete-%{version}+%{version}.tar.gz
 
+# Source code patches
+Patch0: kernel_5.14.patch
+
 BuildRequires:	redhat-rpm-config
 BuildRequires:	autoconf
 BuildRequires:	libtool
@@ -47,13 +50,15 @@ This package contains the libraries for dahdi-linux
 %prep
 %setup -n %{name}-complete-%{version}+%{version}
 
+# Apply patch(es)
+%patch0 -p1
+
 %build
 cd tools
 autoreconf -i
 %{configure} --with-dahdi=../linux
 %{__make}
 cd ..
-
 
 %install
 cd linux

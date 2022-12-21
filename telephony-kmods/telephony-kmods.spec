@@ -23,11 +23,10 @@ URL:		http://www.kernel.org/
 # Sources
 Source0:	dahdi-linux-complete-%{dahdi_version}+%{dahdi_version}.tar.gz
 Source1:	ftp://ftp.sangoma.com/wanpipe-%{wanpipe_version}.tgz
+Patch0:         kernel_5.14.patch
 Patch1:		wanpipe-7.0.34-state.patch
 
 ExclusiveArch:	x86_64
-
-# Source code patches
 
 %define findpat %( echo "%""P" )
 %define __find_requires /usr/lib/rpm/redhat/find-requires.ksyms
@@ -94,6 +93,9 @@ of the same variant of the Linux kernel and not on any one specific build.
 
 %prep
 %setup -c -a 1
+
+# Apply patch(es)
+%patch0 -p1
 %patch1 -p1
 
 echo "override dahdi * weak-updates/dahdi" > dahdi-linux-complete-%{dahdi_version}+%{dahdi_version}/linux/kmod-dahdi.conf
