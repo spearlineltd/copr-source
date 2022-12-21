@@ -1,4 +1,0 @@
-# You should place any module parameters for your DAHDI modules here
-# Example:
-#
-# options wctdm24xxp latency=6 
