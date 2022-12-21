@@ -1,5 +1,5 @@
---- drivers/dahdi/dahdi-base.c        2022-12-21 08:30:54.646156261 +0000
-+++ drivers/dahdi/dahdi-base.c   2022-12-21 08:32:19.860699261 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/dahdi-base.c        2022-12-21 08:30:54.646156261 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/dahdi-base.c   2022-12-21 08:32:19.860699261 +0000
 @@ -82,8 +82,8 @@
  
  #include "hpec/hpec_user.h"
@@ -12,8 +12,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/voicebus/vpmoct.h    2022-12-21 08:39:31.669726114 +0000
-+++ drivers/dahdi/voicebus/vpmoct.h       2022-12-21 08:39:42.136800832 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/voicebus/vpmoct.h    2022-12-21 08:39:31.669726114 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/voicebus/vpmoct.h       2022-12-21 08:39:42.136800832 +0000
 @@ -30,8 +30,8 @@
  #include <linux/timer.h>
  #include "dahdi/kernel.h"
@@ -26,8 +26,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/wcaxx-base.c        2022-12-21 08:42:48.085339236 +0000
-+++ drivers/dahdi/wcaxx-base.c   2022-12-21 08:43:43.245342079 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcaxx-base.c        2022-12-21 08:42:48.085339236 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcaxx-base.c   2022-12-21 08:43:43.245342079 +0000
 @@ -34,8 +34,8 @@
  #include <linux/firmware.h>
  #include <linux/crc32.h>
@@ -40,8 +40,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/wct4xxp/base.c      2022-12-21 08:45:52.057381434 +0000
-+++ drivers/dahdi/wct4xxp/base.c 2022-12-21 08:46:20.049448561 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wct4xxp/base.c      2022-12-21 08:45:52.057381434 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wct4xxp/base.c 2022-12-21 08:46:20.049448561 +0000
 @@ -42,8 +42,8 @@
  #include <linux/crc32.h>
  #include <linux/slab.h>
@@ -54,8 +54,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/wct4xxp/vpm450m.c   2022-12-21 08:51:38.480216702 +0000
-+++ drivers/dahdi/wct4xxp/vpm450m.c      2022-12-21 08:52:08.455289904 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wct4xxp/vpm450m.c   2022-12-21 08:51:38.480216702 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wct4xxp/vpm450m.c      2022-12-21 08:52:08.455289904 +0000
 @@ -29,8 +29,8 @@
  
  #include <dahdi/kernel.h>
@@ -68,8 +68,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/wctc4xxp/base.c     2022-12-21 10:06:14.310046719 +0000
-+++ drivers/dahdi/wctc4xxp/base.c        2022-12-21 10:06:54.607216021 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wctc4xxp/base.c     2022-12-21 10:06:14.310046719 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wctc4xxp/base.c        2022-12-21 10:06:54.607216021 +0000
 @@ -40,8 +40,8 @@
  #include <linux/timer.h>
  #include <dahdi/kernel.h>
@@ -82,8 +82,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/wctdm24xxp/base.c   2022-12-21 10:08:32.240626148 +0000
-+++ drivers/dahdi/wctdm24xxp/base.c      2022-12-21 10:09:04.200760401 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wctdm24xxp/base.c   2022-12-21 10:08:32.240626148 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wctdm24xxp/base.c      2022-12-21 10:09:04.200760401 +0000
 @@ -54,8 +54,8 @@ Tx Gain - W/Pre-Emphasis: -23.99 to 0.00
  #include <linux/crc32.h>
  #include <linux/slab.h>
@@ -96,8 +96,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/wcte13xp-base.c     2022-12-21 10:12:49.701695005 +0000
-+++ drivers/dahdi/wcte13xp-base.c        2022-12-21 10:14:31.908098433 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcte13xp-base.c     2022-12-21 10:12:49.701695005 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcte13xp-base.c        2022-12-21 10:14:31.908098433 +0000
 @@ -36,8 +36,8 @@
  #include <linux/crc32.h>
  #include <dahdi/kernel.h>
@@ -110,8 +110,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/wcte43x-base.c      2022-12-21 10:16:11.166490229 +0000
-+++ drivers/dahdi/wcte43x-base.c 2022-12-21 10:16:31.077568820 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcte43x-base.c      2022-12-21 10:16:11.166490229 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcte43x-base.c 2022-12-21 10:16:31.077568820 +0000
 @@ -43,8 +43,8 @@
  #include <linux/firmware.h>
  #include <oct612x.h>
@@ -124,8 +124,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/wcxb.c      2022-12-21 10:18:18.890994372 +0000
-+++ drivers/dahdi/wcxb.c 2022-12-21 10:18:38.884073295 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcxb.c      2022-12-21 10:18:18.890994372 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcxb.c 2022-12-21 10:18:38.884073295 +0000
 @@ -36,8 +36,8 @@
  
  #include <dahdi/kernel.h>
@@ -138,8 +138,8 @@
  #else
  #include <stdbool.h>
 
---- drivers/dahdi/wcxb_spi.h  2022-12-21 10:20:27.966503881 +0000
-+++ drivers/dahdi/wcxb_spi.h     2022-12-21 10:21:04.238647051 +0000
+--- dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcxb_spi.h  2022-12-21 10:20:27.966503881 +0000
++++ dahdi-linux-complete-3.2.0+3.2.0/linux/drivers/dahdi/wcxb_spi.h     2022-12-21 10:21:04.238647051 +0000
 @@ -26,8 +26,8 @@
  #include <linux/spi/spi.h>
  #include <linux/version.h>
