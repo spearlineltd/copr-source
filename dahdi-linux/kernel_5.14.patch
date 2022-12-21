@@ -154,17 +154,15 @@
 
 --- dahdi-linux-complete-3.2.0+3.2.0/linux/include/dahdi/kernel.h 2022-12-21 10:22:59.070100314 +0000
 +++ /dahdi-linux-complete-3.2.0+3.2.0/linux/include/dahdi/kernel.h 2022-12-21 11:54:50.964993034 +0000
-@@ -1488,7 +1488,7 @@ static inline void *PDE_DATA(const struc
+@@ -1488,11 +1488,7 @@ static inline void *PDE_DATA(const struc
  #endif /* 4.15.0 */
  #endif /* 5.6 */
  
 -#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0)
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 14, 0)
- #ifdef CONFIG_PROC_FS
+-#ifdef CONFIG_PROC_FS
  #define PDE_DATA(i)    pde_data(i)
- #endif
-
-
-
-
-
+-#endif
+-#endif
+ 
+ #ifndef TIMER_DATA_TYPE
+ #define TIMER_DATA_TYPE struct timer_list *
