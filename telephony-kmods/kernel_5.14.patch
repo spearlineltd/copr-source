@@ -50,7 +50,8 @@
 -#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0)
 +/* Linux kernel 5.14 and greater has removed user-space headers from the kernel include path */
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 14, 0)
- #include <asm/types.h>
+-#include <asm/types.h>
++#include <linux/types.h>
  #else
  #include <stdbool.h>
 
